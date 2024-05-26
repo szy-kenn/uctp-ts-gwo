@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
+    body {
+      position: relative;
+      width: 100%;
+    }
+
+    .wrapper {
+      border: 1px solid red;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .input-container-container {
+      position: relative;
+      align-self: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5rem;
+    }
+
+    .positions, .variables, .coefficients {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .input-container {
+      position: relative;
+      display: grid;
+      grid-template-columns: .1fr .6fr .2fr;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .coefficient-container {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .coefficient-container span:nth-child(1) {
+      font-weight: bold;
+    }
+
+  </style>
+
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>Grey Wolf Optimizer</h1>
+    <canvas 
+      id="myCanvas" width="1000" height="100" 
+      style="border: 1px solid black;">
+    </canvas>
+    
+    <div class="input-container-container">
+      <div class="positions">
+        <div class="input-container">
+          <label for="wolfPos">Wolf Position</label>
+          <input type="range" name="wolfPos" id="wolfPos" min="10" max="990" value="200">
+          <span id="wolfPosText"></span>
+        </div>
+      
+        <div class="input-container">
+          <label for="preyPos">Prey Position</label>
+          <input type="range" name="preyPos" id="preyPos" min="10" max="990" value="500">
+          <span id="preyPosText"></span>
+        </div>
+      </div>
+    
+      <div class="variables">
+        <div class="input-container">
+          <label for="aValue">a</label>
+          <input type="range" name="aValue" id="aValue" min="0" max="2" value="1" step="0.01">
+          <span id="aValueText"></span>
+        </div>
+      
+        <div class="input-container">
+          <label for="r1Value">r1</label>
+          <input type="range" name="r1Value" id="r1Value" min="0" max="1" value=".5" step="0.01">
+          <span id="r1ValueText"></span>
+        </div>
+      
+        <div class="input-container">
+          <label for="r2Value">r2</label>
+          <input type="range" name="r2Value" id="r2Value" min="0" max="1" value=".5" step="0.01">
+          <span id="r2ValueText"></span>
+        </div>
+      </div>
+
+      <div class="coefficients">
+        <div class="coefficient-container">
+          <span>A</span>
+          <span id="AValueText"></span>
+        </div>
+        <div class="coefficient-container">
+          <span>C</span>
+          <span id="CValueText"></span>
+        </div>
+        <div class="coefficient-container">
+          <span>D</span>
+          <span id="DValueText"></span>
+        </div>
+        <div class="coefficient-container">
+          <span>X</span>
+          <span id="XValueText"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
