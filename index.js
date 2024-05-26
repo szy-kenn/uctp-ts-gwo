@@ -17,9 +17,9 @@ const computeA = () => parseFloat(((2 * a * r1) - a).toFixed(5));
 
 const computeC = () => parseFloat((2 * r2).toFixed(5));
 
-const computeD = (C) => Math.abs(C * px - sx);
+const computeD = (C) => Math.abs((C * px) - sx);
 
-const computeX = (A, D) => Math.abs(px - A * D);
+const computeX = (A, D) => Math.abs(px - (A * D));
 
 const updateValues = () => {
   px = preyPosSlider.value;
