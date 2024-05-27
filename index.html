@@ -56,6 +56,25 @@
       font-weight: bold;
     }
 
+    .timetable {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border: 1px solid black;
+      padding: .5rem 1rem;
+    }
+
+    .timeslots {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .timeslots span {
+      border: 1px solid black;
+      padding: 1rem;
+    }
+
   </style>
 
   <title>Document</title>
@@ -65,7 +84,7 @@
   <div class="wrapper">
     <h1>Grey Wolf Optimizer</h1>
     <canvas 
-      id="myCanvas" width="1000" height="100" 
+      id="myCanvas" width="1500" height="100" 
       style="border: 1px solid black;">
     </canvas>
     
@@ -73,13 +92,13 @@
       <div class="positions">
         <div class="input-container">
           <label for="wolfPos">Wolf Position</label>
-          <input type="range" name="wolfPos" id="wolfPos" min="10" max="990" value="200">
+          <input type="range" name="wolfPos" id="wolfPos" min="0" max="1500" value="200" step="1">
           <span id="wolfPosText"></span>
         </div>
       
         <div class="input-container">
           <label for="preyPos">Prey Position</label>
-          <input type="range" name="preyPos" id="preyPos" min="10" max="990" value="500">
+          <input type="range" name="preyPos" id="preyPos" min="0" max="1500" value="500" step="1">
           <span id="preyPosText"></span>
         </div>
       </div>
@@ -87,19 +106,19 @@
       <div class="variables">
         <div class="input-container">
           <label for="aValue">a</label>
-          <input type="range" name="aValue" id="aValue" min="0" max="2" value="1" step="0.01">
+          <input type="range" name="aValue" id="aValue" min="0" max="2" value="2" step="0.001">
           <span id="aValueText"></span>
         </div>
       
         <div class="input-container">
           <label for="r1Value">r1</label>
-          <input type="range" name="r1Value" id="r1Value" min="0" max="1" value=".5" step="0.01">
+          <input type="range" name="r1Value" id="r1Value" min="0" max="1" value=".5" step="0.001">
           <span id="r1ValueText"></span>
         </div>
       
         <div class="input-container">
           <label for="r2Value">r2</label>
-          <input type="range" name="r2Value" id="r2Value" min="0" max="1" value=".5" step="0.01">
+          <input type="range" name="r2Value" id="r2Value" min="0" max="1" value=".5" step="0.001">
           <span id="r2ValueText"></span>
         </div>
       </div>
@@ -124,6 +143,44 @@
       </div>
 
     </div>
+
+    <div class="timetable">
+      <p>Timetable 1</p>
+      <div class="timeslots" id="ts1">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+      </div>
+    </div>
+
+    <div class="timetable">
+      <p>Timetable 2</p>
+      <div class="timeslots" id="ts2">
+        <span>1</span>
+        <span>2</span>
+        <span>5</span>
+        <span>1</span>
+        <span>3</span>
+      </div>
+    </div>
+
+    <div class="coefficient-container">
+      <span>N_2</span>
+      <span id="N2ValueText"></span>
+    </div>
+
+    <div class="coefficient-container">
+      <span>D_2</span>
+      <span id="D2ValueText">5</span>
+    </div>
+
+    <div class="coefficient-container">
+      <span>X_2</span>
+      <span id="X2ValueText"></span>
+    </div>
+
   </div>
 
   <script src="index.js"></script>

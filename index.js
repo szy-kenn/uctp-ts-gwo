@@ -12,6 +12,10 @@ let A;
 let C;
 let D;
 let X;
+let N = 5;
+let N2;
+let D2;
+let X2;
 
 const computeA = () => parseFloat(((2 * a * r1) - a).toFixed(5));
 
@@ -20,6 +24,40 @@ const computeC = () => parseFloat((2 * r2).toFixed(5));
 const computeD = (C) => Math.abs((C * px) - sx);
 
 const computeX = (A, D) => Math.abs(px - (A * D));
+
+const computeD2 = (C, N, N2) => Math.abs((C * N) - N2);
+
+const computeX2 = (A, D2) => Math.abs(N - (A * D2)) - N2;
+
+const computeN2 = () => {
+  const ts1 = document.getElementById("ts1");
+  const ts2 = document.getElementById("ts2");
+
+  let ts1string = "";
+  let ts2string = "";
+
+  ts1.childNodes.forEach((child) => {
+    if (child.nodeName === "SPAN") {
+      ts1string += child.textContent;
+    }
+  })
+
+  ts2.childNodes.forEach((child) => {
+    if (child.nodeName === "SPAN") {
+      ts2string += child.textContent;
+    }
+  })
+
+  let _n2 = 0;
+
+  for (let i = 0; i < ts1string.length; i++) {
+    if (ts1string[i] === ts2string[i]) {
+      _n2++;
+    }
+  }
+
+  return _n2;
+}
 
 const updateValues = () => {
   px = preyPosSlider.value;
@@ -38,11 +76,17 @@ const updateValues = () => {
   C = computeC();
   D = computeD(C);
   X = computeX(A, D);
+  N2 = computeN2();
+  D2 = computeD2(C, N, N2);
+  X2 = computeX2(A, D2);
 
   AValueText.textContent = A;
   CValueText.textContent = C;
   DValueText.textContent = D;
   XValueText.textContent = X;
+  D2ValueText.textContent = D2;
+  X2ValueText.textContent = X2;
+  N2ValueText.textContent = N2;
 }
 
 const redraw = () => {
@@ -50,7 +94,7 @@ const redraw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
   ctx.moveTo(0, 50);
-  ctx.lineTo(1000, 50);
+  ctx.lineTo(canvas.width, 50);
   ctx.strokeStyle = "black";
   ctx.lineWidth = .25;
   ctx.stroke();
@@ -108,6 +152,11 @@ const CValueText = document.getElementById("CValueText");
 const DValueText = document.getElementById("DValueText");
 const XValueText = document.getElementById("XValueText");
 
+const D2ValueText = document.getElementById("D2ValueText");
+const X2ValueText = document.getElementById("X2ValueText");
+
+const N2ValueText = document.getElementById("N2ValueText");
+
 const aValueSlider = document.getElementById("aValue");
 const aValueText = document.getElementById("aValueText");
 
@@ -128,5 +177,11 @@ r2ValueSlider.addEventListener("input", () => redraw());
 
 redraw();
 
+setInterval(() => {
+  r1ValueSlider.value = Math.random();
+  r2ValueSlider.value = Math.random();
+  // aValueSlider.value -= 0.001; 
+  redraw();
+}, 1) 
 
 
